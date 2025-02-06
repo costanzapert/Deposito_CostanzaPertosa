@@ -82,9 +82,12 @@ class Scuola:
         print("i professori sono:")
         for x in self.lista_professori:
             x.presentazione()
-        
     
-    while True:    
+scuola1= Scuola("De rogatis")
+
+                    
+    
+while True:    
         scelta = int(input( "Digita 1 se vuoi aggiungere uno studente, 2 se professore, 3 se non vuoi aggiungere nulla"))
         if scelta ==1:
             nome = input("Nome: ")
@@ -97,7 +100,7 @@ class Scuola:
             #print(voti)
             stud1 = Studente (nome, età, voti)
             #stud1.presentazione()
-            lista_studenti.append(stud1)
+            scuola1.lista_studenti.append(stud1)
             
             
         if scelta ==2:
@@ -105,13 +108,13 @@ class Scuola:
             età = int(input("Età: "))
             materia = input("Materia: ")
             prof1 = Professore(nome,età,materia)
-            lista_professori.append(prof1)
-            prof1.presentazione()
+            scuola1.lista_professori.append(prof1)
+            #prof1.presentazione()
         
         if scelta ==3:
             break
     
     
-scuola1= Scuola("De rogatis")
+
 scuola1.stampa()
-            
+
