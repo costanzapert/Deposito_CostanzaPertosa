@@ -54,10 +54,40 @@ class PostoVIP(Posto):
 #post2.prenota()       
 #print(post2.servizi_extra)
         
-class PostoStandard:
-    def __init__(self, numero, fila, costo, occupato = False ):
-        super().__init__(self, numero, fila, occupato = False )
+class PostoStandard(Posto):
+    def __init__(self, numero, fila, costo,  occupato = False ):
+        super().__init__( numero, fila, occupato  )
         self.costo = costo
+       
+        
         
     def prenota(self):
+        super().prenota()
+        print("Il prezzo è di ", self.costo)
         
+#post3= PostoStandard(4,10,30)
+#post3.prenota() 
+
+class Teatro:
+    
+    def __init__(self):
+        self._posti = []
+    
+    def aggiugi_posto(self, posto):
+        scelta = int(input("1) Posto Vip 2)  Posto Standard"))
+        if scelta == 1:
+            num  = int(input("Numero posto: "))
+            fil = int(input("Numero fila: "))
+            pv = PostoVIP(num, fil, True)
+        self._posti.append(pv)
+            
+        if scelta == 2:
+            num  = int(input("Numero posto: "))
+            fil = int(input("Numero fila: "))
+            costo = int(input("Costo: "))
+            st = PostoStandard(num, fil, costo, True)
+        self._posti.append(st)
+         
+        
+        
+    
