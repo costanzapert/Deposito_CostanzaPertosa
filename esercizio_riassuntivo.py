@@ -99,16 +99,18 @@ class Teatro:
             st = PostoStandard(num, fil, costo, False)
             self._posti.append(st)
 
-    #NON FUNZIONA
-    # def aggiugi_posto(self):
+    # #NON FUNZIONA
+    # def aggiungi_posto(self):
     # # non sto usando posto!!!!!
     # # controlla le ripetizioni
     #     scelta = int(input("1) Posto Vip 2)  Posto Standard"))
     #     if scelta == 1:
     #         num  = int(input("Numero posto: "))
     #         fil = int(input("Numero fila: "))
+            
     #         pv = PostoVIP(num, fil, False)
-    #         if pv in self._posti:
+    #         print(self._posti)
+    #         if pv in self._posti:   #occhio non funziona perchè pv mi dà la posizione dell'oggetto!!!! funziona così per valori base
     #             print("Posto già presente")
     #         else:
     #             self._posti.append(pv)
@@ -140,13 +142,15 @@ class Teatro:
         for x in self._posti:
             if x.get_occupato() == True:
                 print(x)
-        #ovviamente stampa la posizione
+
     
  
 
 
 t1=Teatro()
 t1.aggiungi_posto()
+t1.aggiungi_posto()
+
 t1.prenota_posto(3,4)
 t1.stampa_posti_occupati()
 #t1.stampa_posti_occupati()
