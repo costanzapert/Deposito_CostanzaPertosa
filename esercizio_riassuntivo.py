@@ -49,6 +49,11 @@ class PostoVIP(Posto):
     def prenota(self):
         super().prenota()
         self.servizi_extra = ["Accesso al lounge", "Servizio in posto"]
+    
+        
+    def __str__(self):
+        return "PostoVip(" + str(self.get_numero()) + ", " + str(self.get_fila()) + ")"
+
 
 #post2= PostoVIP(4,10)
 #post2.prenota()       
@@ -65,6 +70,9 @@ class PostoStandard(Posto):
         super().prenota()
         print("Il prezzo è di ", self.costo)
         
+    def __str__(self):
+        return "PostoStandard(" + str(self.get_numero()) + ", " + str(self.get_fila()) + ")"
+
 #post3= PostoStandard(4,10,30)
 #post3.prenota() 
 
@@ -73,21 +81,76 @@ class Teatro:
     def __init__(self):
         self._posti = []
     
-    def aggiugi_posto(self, posto):
-        scelta = int(input("1) Posto Vip 2)  Posto Standard"))
+    def aggiungi_posto(self):
+        # Controlla le ripetizioni prima di aggiungere un nuovo posto
+        scelta = int(input("1) Posto Vip 2) Posto Standard: "))
+        num = int(input("Numero posto: "))
+        fil = int(input("Numero fila: "))
+
+        for p in self._posti:
+            if p.get_numero() == num and p.get_fila() == fil:
+                print("Posto già presente")
+
         if scelta == 1:
-            num  = int(input("Numero posto: "))
-            fil = int(input("Numero fila: "))
-            pv = PostoVIP(num, fil, True)
-        self._posti.append(pv)
-            
-        if scelta == 2:
-            num  = int(input("Numero posto: "))
-            fil = int(input("Numero fila: "))
+            pv = PostoVIP(num, fil, False)
+            self._posti.append(pv)
+        elif scelta == 2:
             costo = int(input("Costo: "))
-            st = PostoStandard(num, fil, costo, True)
-        self._posti.append(st)
-         
-        
-        
+            st = PostoStandard(num, fil, costo, False)
+            self._posti.append(st)
+
+    #NON FUNZIONA
+    # def aggiugi_posto(self):
+    # # non sto usando posto!!!!!
+    # # controlla le ripetizioni
+    #     scelta = int(input("1) Posto Vip 2)  Posto Standard"))
+    #     if scelta == 1:
+    #         num  = int(input("Numero posto: "))
+    #         fil = int(input("Numero fila: "))
+    #         pv = PostoVIP(num, fil, False)
+    #         if pv in self._posti:
+    #             print("Posto già presente")
+    #         else:
+    #             self._posti.append(pv)
+                
+            
+    #     elif scelta == 2:
+    #         num  = int(input("Numero posto: "))
+    #         fil = int(input("Numero fila: "))
+    #         costo = int(input("Costo: "))
+    #         st = PostoStandard(num, fil, costo, False)
+    #         if st not in self._posti:
+    #             self._posti.append(st)
+    #         else:
+    #             print("Posto già presente")
     
+
+    def prenota_posto(self, numero,fila):
+         #controlla che non sia gia prenotato
+        for x in self._posti:
+            if numero == x.get_numero() and fila ==x.get_fila():
+                x.prenota()
+            elif x.get_occupato() == False:
+                print("Posto occupato")
+            else:
+                print("Errore posto e fila")
+    
+    
+    def stampa_posti_occupati(self):
+        for x in self._posti:
+            if x.get_occupato() == True:
+                print(x)
+        #ovviamente stampa la posizione
+    
+ 
+
+
+t1=Teatro()
+t1.aggiungi_posto()
+t1.prenota_posto(3,4)
+t1.stampa_posti_occupati()
+#t1.stampa_posti_occupati()
+
+
+
+
