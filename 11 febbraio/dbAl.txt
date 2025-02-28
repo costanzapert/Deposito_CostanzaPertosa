@@ -1,0 +1,3 @@
+nome,cognome,voto1,voto2,voto3
+cost,pertosa,1,2,3
+andrea,l,4,5,10

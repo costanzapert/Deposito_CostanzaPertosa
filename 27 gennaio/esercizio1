@@ -1,0 +1,6 @@
+intero = int (input("Inserisci intero"))
+virgola = float (input("Inserisci float"))
+booleano = bool (input("Inserisci booleano"))
+carattere = input ("Inserisci lettera")
+stringa = input ("Inserisci stringa")
+print("intero", intero, "float", virgola, "booleano", booleano, "carattere", carattere, "stringa", stringa)
